@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -11,6 +13,21 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+
+    public function users(): BelongsTo
+    {
+        return $this->belongsTo(UserType::class, 'user_type', 'id');
+    }
+
+    public function usersToBorrowRequest(): HasMany
+    {
+        return $this->hasMany(BorrowRequest::class, 'issuer_id', 'id');
+    }
+
+    public function usersToBorrow(): HasMany
+    {
+        return $this->hasMany(Borrow::class, 'issuer_id', 'id');
+    }
 
     /**
      * The attributes that are mass assignable.

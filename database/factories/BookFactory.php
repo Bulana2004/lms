@@ -17,7 +17,6 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
-            'category_id' => fake()->numberBetween(1,7),
             'isbn_no' => fake()->numerify('#############'),
             'description' => substr(fake()->text(250),0,250),
             'price' => fake()->randomFloat(2,100,1000),

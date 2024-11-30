@@ -17,8 +17,7 @@ class BorrowRequestFactory extends Factory
     public function definition(): array
     {
         return [
-            'books_id' => fake()->numberBetween(1,100),
-            "issuer_id" => fake()->numberBetween(1,100)
+            
         ];
     }
 }
