@@ -10,7 +10,9 @@ class UserType extends Model
 {
     use HasFactory;
 
-    public function UserTypesToUsers(): HasMany
+    public $timestamps = false;
+
+    public function user(): HasMany
     {
         return $this->hasMany(User::class, 'user_types', 'id');
     }

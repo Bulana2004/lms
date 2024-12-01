@@ -10,7 +10,9 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function categorytobook(): HasMany
+    public $timestamps = false;
+
+    public function book(): HasMany
     {
         return $this->hasMany(Book::class, 'category_id', 'id');
     } 
